@@ -1,0 +1,6 @@
+# Drop-in for filter-chain.service (~/.config/systemd/user/filter-chain.service.d/verify-sink.conf):
+# fail the start unless BOTH ends of the virtual sink exist, and retry.
+[Service]
+ExecStartPost=/bin/bash -c 'for i in $(seq 80); do pw-link -o | grep -q effect_output.vsurround71 && pw-link -i | grep -q effect_input.vsurround71 && exit 0; sleep 0.25; done; exit 1'
+Restart=on-failure
+StartLimitIntervalSec=0

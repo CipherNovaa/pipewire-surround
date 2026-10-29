@@ -1,0 +1,15 @@
+[Unit]
+Description=Keep vsurround71 filter-chain output linked to its sink
+After=pipewire.service filter-chain.service
+Wants=filter-chain.service
+
+[Service]
+Type=simple
+# Install: ln -s <checkout>/src/vsurround_link_keeper.sh ~/.local/bin/
+ExecStart=%h/.local/bin/vsurround_link_keeper.sh
+Restart=always
+RestartSec=3
+Nice=5
+
+[Install]
+WantedBy=default.target

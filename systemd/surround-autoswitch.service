@@ -1,0 +1,14 @@
+[Unit]
+Description=Route audio to whichever headphones are in use (surround on, or plain stereo)
+After=pipewire.service filter-chain.service
+Wants=filter-chain.service
+
+[Service]
+Type=simple
+# Install: ln -s <checkout>/src/surround_autoswitch.py ~/.local/bin/
+ExecStart=%h/.local/bin/surround_autoswitch.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

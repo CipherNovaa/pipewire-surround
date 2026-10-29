@@ -1,0 +1,10 @@
+{
+  "primary_sink": "alsa_output.usb-YourVendor_Your_Headset-00.analog-stereo",
+  "priority_sink_prefixes": ["alsa_output.usb-Some_Earbud_Dongle"],
+  "headset_detect": "headsetcontrol",
+  "headset_level": 100,
+  "speaker_level": 30,
+  "hrtf_dir": "~/.local/share/hrtf",
+  "default_profile": "atmos",
+  "headroom_db": -6.0
+}
