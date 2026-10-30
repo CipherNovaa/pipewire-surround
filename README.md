@@ -49,7 +49,7 @@ flowchart LR
 
 **The link keeper.** Because the output is pinned and set not to reconnect, a headset power-cycle (new node id on re-enumeration) leaves the chain "active (running)" with its output linked to nothing: sound enters the HRTF and falls off the end. This happened twice, once going unnoticed for two days, and a start-time check in the service cannot catch it. `vsurround_link_keeper.sh` watches `pw-link -m -l` events (30 s safety poll, 0.5 s debounce) and re-creates the links when missing, pairing ports by position rather than name since sinks do not all use FL/FR. It reads node name and target from the generated config, so there is one source of truth. It is silent when the chain is down or the headset is off.
 
-## Built with AI agents
+## Workflow for this Project
 
 - The PipeWire traps above were found by an agent driving `pw-link`, `pactl` and live journals against the running graph, then recorded in a persistent memory note so later sessions did not repeat them.
 - The headroom figures come from a measurement loop: known-level pink noise through the chain, recorded from the sink's monitor, before and after the change, rather than guessing.
